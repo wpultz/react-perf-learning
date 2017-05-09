@@ -8,14 +8,15 @@ var entries;
 /* eslint-enable */
 if (process.env.NODE_ENV === 'production') {
   entries = {
-    app: './tictactoe/appRedux.js',
+    app: './list/app.js',
   };
 } else {
   entries = {
     app: [
       'webpack-dev-server/client?http://localhost:8080',
       'webpack/hot/only-dev-server',
-      './tictactoe/appRedux.js',
+      './list/app.js',
+      // adding this package will ensure that the perf tools will be included in the dev bundle
       'react-addons-perf'
     ]
   };
@@ -33,6 +34,7 @@ module.exports = {
     rules: [
       { test: /\.jsx?$/, exclude: /node_modules/, use: ['react-hot-loader', 'babel-loader'] },
       { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] },
+      // expose loader will expose the perf tools to the browser as `Perf`
       { test: require.resolve('react-addons-perf'), use: [{ loader: 'expose-loader', options: 'Perf' }] }
     ]
   },
