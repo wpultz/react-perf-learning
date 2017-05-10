@@ -3,8 +3,12 @@ var express = require('express');
 
 var app = express();
 
-app.get(['/'], function(req, res) {
-  res.sendFile(path.join(__dirname, 'app.html'));
+app.get(['/', '/feed'], function(req, res) {
+  res.sendFile(path.join(__dirname, 'feed.html'));
+});
+
+app.get(['/list'], function(req, res) {
+  res.sendFile(path.join(__dirname, 'list.html'));
 });
 
 app.use('/bundles', express.static('bundles'))

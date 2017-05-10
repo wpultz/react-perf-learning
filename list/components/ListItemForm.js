@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-export default class ListItemForm extends PureComponent {
+export default class ListItemForm extends Component {
   static propTypes = {
     fieldValue: PropTypes.string,
     updateValue: PropTypes.func

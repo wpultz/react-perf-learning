@@ -8,17 +8,22 @@ var entries;
 /* eslint-enable */
 if (process.env.NODE_ENV === 'production') {
   entries = {
-    app: './list/app.js',
+    list: './list/app.js',
+    feed: './feed/app.js'
   };
 } else {
   entries = {
-    app: [
+    list: [
       'webpack-dev-server/client?http://localhost:8080',
       'webpack/hot/only-dev-server',
       './list/app.js',
-      // adding this package will ensure that the perf tools will be included in the dev bundle
-      'react-addons-perf'
-    ]
+    ],
+    feed: [
+      'webpack-dev-server/client?http://localhost:8080',
+      'webpack/hot/only-dev-server',
+      './feed/app.js',
+    ],
+    shared: ['react-addons-perf']
   };
 }
 
